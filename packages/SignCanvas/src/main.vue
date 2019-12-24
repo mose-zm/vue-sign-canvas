@@ -67,6 +67,30 @@ export default {
             this.canvasClear();
         },
 
+        // init demo
+        drawSmile() {
+            this.context.beginPath();
+            this.context.arc(75, 75, 50, 0, Math.PI * 2, true); // 绘制
+            this.context.moveTo(110, 75);
+            this.context.arc(75, 75, 35, 0, Math.PI, false); // 口(顺时针)
+            this.context.moveTo(65, 65);
+            this.context.arc(60, 65, 5, 0, Math.PI * 2, true); // 左眼
+            this.context.moveTo(95, 65);
+            this.context.arc(90, 65, 5, 0, Math.PI * 2, true); // 右眼
+            this.context.stroke();
+        },
+
+        loadImg(src){
+            let _this = this;
+            let img = new Image();
+            img.setAttribute('crossOrigin', 'anonymous');
+            img.src = src;
+            // 将图片画到canvas上面上去！
+            img.onload = function () {
+                _this.context.drawImage(img,0,0);
+            };
+        },
+
         /**
          * 轨迹宽度
          */
