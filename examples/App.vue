@@ -3,7 +3,8 @@
         <sign-canvas class="sign-canvas" ref="SignCanvas" :options="options" v-model="value"/>
         <img class="view-image" :src="value" width="150" height="150">
         <div class="sign-btns">
-            <span id="load" @click="load()">加载</span>
+            <span id="loadNew" @click="loadNew()">新加载</span>
+            <span id="coverLoad" @click="coverLoad()">覆盖加载</span>
             <span id="clear" @click="canvasClear()">清空</span>
             <span id="save" @click="saveAsImg()">保存</span>
             <span id="downL" @click="downloadSignImg()">下载</span>
@@ -26,8 +27,12 @@ export default {
         /**
          * 加载图像
          */
-        load(){
-            this.$refs.SignCanvas.loadImg('https://testfi.oss-cn-hangzhou.aliyuncs.com/1577178007000.png');
+        loadNew(){
+            this.$refs.SignCanvas.loadNew('https://testfi.oss-cn-hangzhou.aliyuncs.com/1577178007000.png');
+        },
+
+        coverLoad(){
+            this.$refs.SignCanvas.coverLoad('https://testfi.oss-cn-hangzhou.aliyuncs.com/1577178007000.png');
         },
 
         /**
@@ -74,7 +79,8 @@ export default {
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
-    #load,
+    #loadNew,
+    #coverLoad,
     #clear,
     #downL,
     #save {

@@ -80,7 +80,7 @@ export default {
             this.context.stroke();
         },
 
-        loadImg(src){
+        coverLoad(src){
             let _this = this;
             let img = new Image();
             img.setAttribute('crossOrigin', 'anonymous');
@@ -89,6 +89,11 @@ export default {
             img.onload = function () {
                 _this.context.drawImage(img,0,0);
             };
+        },
+
+        loadNew(src){
+            this.canvasClear();
+            this.coverLoad(src);
         },
 
         /**
@@ -198,7 +203,6 @@ export default {
             const image = new Image();
             image.src = this.canvas.toDataURL("image/png");
             this.$emit('confirm',image.src);
-            console.log('提交的内容===>', image.src);
             return image.src;
         },
 
